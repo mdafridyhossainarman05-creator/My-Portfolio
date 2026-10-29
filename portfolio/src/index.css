@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root, :root[data-theme="light"] {
+  color-scheme: light;
+  --ink: #f5f6fb; --panel: #ffffff; --line: #e0e3ee; --muted: #586079;
+  --fg: #10131f; --blue: #2f62e8; --violet: #6d4cf0;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #0b0d14; --panel: #121521; --line: #262b3d; --muted: #9aa1b8;
+  --fg: #f4f5f9; --blue: #5b8cff; --violet: #8b6cff;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-fg: var(--fg);
+  --color-blue: var(--blue);
+  --color-violet: var(--violet);
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(60rem 40rem at 88% -8%, color-mix(in srgb, var(--violet) 14%, transparent), transparent 60%),
+    radial-gradient(50rem 40rem at -10% 45%, color-mix(in srgb, var(--blue) 10%, transparent), transparent 60%);
+  background-attachment: fixed;
+  color: var(--fg);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color .3s, color .3s;
+}
+::selection { background: color-mix(in srgb, var(--blue) 35%, transparent); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; border: 2px solid var(--ink); }
+::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+.card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(16, 19, 31, .05);
+  transition: border-color .25s, box-shadow .25s, transform .25s, background-color .3s;
+}
+.card::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 1px; border-radius: 1rem 1rem 0 0;
+  background: linear-gradient(90deg, transparent, var(--blue), var(--violet), transparent);
+  opacity: 0; transition: opacity .25s;
+}
+/* light that follows the mouse inside a card */
+.card::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--blue) 13%, transparent), transparent 65%);
+  opacity: 0; transition: opacity .3s;
+}
+.card:hover { border-color: color-mix(in srgb, var(--blue) 45%, var(--line)); box-shadow: 0 18px 44px -20px color-mix(in srgb, var(--blue) 60%, transparent); transform: translateY(-3px); }
+.card:hover::before, .card:hover::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .card:hover { transform: none; } }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .8rem 1.5rem; border-radius: .8rem; font-weight: 600; font-size: .95rem;
+  transition: transform .15s, box-shadow .2s, border-color .2s, translate .25s ease-out;
+}
+.btn-primary { background: linear-gradient(135deg, var(--blue), var(--violet)); color: #fff; box-shadow: 0 10px 28px -12px var(--violet); }
+.btn-primary:hover { box-shadow: 0 14px 34px -10px var(--violet); }
+.btn-ghost { border: 1px solid var(--line); color: var(--fg); background: color-mix(in srgb, var(--panel) 70%, transparent); }
+.btn-ghost:hover { border-color: var(--blue); }
+.btn:active { transform: scale(.97); }
+
+.placeholder { color: var(--muted); font-style: italic; opacity: .85; }

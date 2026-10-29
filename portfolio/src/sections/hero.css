@@ -1,0 +1,11 @@
+.font-hero { font-family: "Bebas Neue", "Space Grotesk", Impact, sans-serif; }
+.outline-text { color: transparent; -webkit-text-stroke: 1.5px var(--fg); }
+
+.hud { position: relative; background: color-mix(in srgb, var(--panel) 55%, transparent); backdrop-filter: blur(8px); }
+.hud::before, .hud::after { content: ""; position: absolute; width: 18px; height: 18px; border: 1px solid var(--fg); opacity: .6; }
+.hud::before { top: -6px; left: -6px; border-right: 0; border-bottom: 0; }
+.hud::after { bottom: -6px; right: -6px; border-left: 0; border-top: 0; }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee { animation: marquee 40s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .marquee { animation: none; } }
