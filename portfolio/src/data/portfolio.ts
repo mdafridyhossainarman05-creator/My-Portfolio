@@ -7,7 +7,7 @@ export const profile = {
   intro:
     "I’m a technology-focused professional with experience in Tech Sales and a background in Computer Science and Engineering. I have an interest in web development and design, and I continue to develop my technical skills while growing professionally.",
   // Leave empty ('') until you have them. Empty values are shown as placeholders / hidden.
-  email: '',
+  email: 'mdafridyhossainarman05@gmail.com',
   github: '', // e.g. https://github.com/username
   linkedin: '', // e.g. https://www.linkedin.com/in/username
   photo: '', // e.g. '/profile.jpg' (put the file inside /public)
