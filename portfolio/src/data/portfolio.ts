@@ -69,7 +69,7 @@ export interface EducationItem {
 // Dates and results are kept exactly as supplied.
 export const education: EducationItem[] = [
   { title: 'Diploma in Engineering', institution: 'Kushtia Polytechnic Institute', subjectLabel: 'Department', subject: 'Computer Science and Engineering (CSE)', year: '2023', resultLabel: 'CGPA', result: '3.59' },
-  { title: 'Secondary School Certificate (SSC)', institution: 'Barokhada Secondary School', subjectLabel: 'Group', subject: 'Science', year: '2029', resultLabel: 'GPA', result: '4.00' },
+  { title: 'Secondary School Certificate (SSC)', institution: 'Barokhada Secondary School', subjectLabel: 'Group', subject: 'Science', year: '2019', resultLabel: 'GPA', result: '4.00' },
   { title: 'English Proficiency', subjectLabel: 'Skill', subject: 'English language', resultLabel: 'Level', result: 'B2' },
 ]
 
